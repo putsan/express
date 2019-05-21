@@ -1,17 +1,26 @@
-const express = require('express')
-const helmet = require('helmet')
+// const express = require('express')
+// const helmet = require('helmet')
+//
+// const app = express()
+//
+// // add some security-related headers to the response
+// app.use(helmet())
+//
+// app.get('*', (req, res) => {
+//     res.set('Content-Type', 'text/html')
+//     res.status(200).send(`
+//         <h1><marquee direction=right>Hello from Express path '/' on Now 2.0!</marquee></h1>
+//         <h2>Go to <a href="/about">/about</a></h2>
+//     `)
+// })
+//
+// module.exports = app
+const Telegraf = require('telegraf');
+const app = new Telegraf('484788277:AAF6_Oxc51HkbNBwRrvNPgQplDXbjdQJERg');
 
-const app = express()
+app.hears('hi', ctx => {
+    return ctx.reply('Hey!');
+});
 
-// add some security-related headers to the response
-app.use(helmet())
+app.startPolling();
 
-app.get('*', (req, res) => {
-    res.set('Content-Type', 'text/html')
-    res.status(200).send(`
-        <h1><marquee direction=right>Hello from Express path '/' on Now 2.0!</marquee></h1>
-        <h2>Go to <a href="/about">/about</a></h2>
-    `)
-})
-
-module.exports = app
